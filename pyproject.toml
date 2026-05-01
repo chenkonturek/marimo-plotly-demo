@@ -1,0 +1,11 @@
+[project]
+name = "marimo-plotly-demo"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "marimo>=0.10.0",
+    "plotly>=5.22",
+    "pandas>=2.2",
+    "numpy>=2.0",
+    "rich>=13.0",
+]
