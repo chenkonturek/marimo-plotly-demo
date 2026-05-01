@@ -13,3 +13,6 @@ dependencies = [
     "numpy>=2.0",
     "rich>=13.0",
 ]
+
+[tool.setuptools]
+py-modules = ["simulation", "dashboard"]
