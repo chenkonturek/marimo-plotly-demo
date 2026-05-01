@@ -22,6 +22,33 @@ simulation.py    Synthetic data layer (FeatureSpec, DashboardConfig,
 pyproject.toml   Dependencies
 ```
 
+## Setup
+
+**Option A — standard venv + pip**
+
+```bash
+python -m venv .venv
+source .venv/bin/activate      # Windows: .venv\Scripts\activate
+pip install -e .
+```
+
+**Option B — uv (faster)**
+
+```bash
+uv venv && uv pip install -e .
+```
+
+Verify the install:
+
+```bash
+python -c "
+import simulation
+df = simulation.simulate_feature_stats(simulation.CONFIG)
+print(df.shape)          # (60, 25)
+print(list(df.columns))
+"
+```
+
 ## Running
 
 ```bash
@@ -57,22 +84,3 @@ All thresholds and simulation parameters live in `DashboardConfig` / `CONFIG` in
 | `anomaly_probability` | 0.03 | Per-batch anomaly injection rate |
 | `total_batches` | 60 | Simulated batch history length |
 
-## Smoke test
-
-```bash
-python -c "
-import simulation
-df = simulation.simulate_feature_stats(simulation.CONFIG)
-print(df.shape)          # (60, 25)
-print(list(df.columns))
-"
-```
-
-## Requirements
-
-- Python 3.12+
-- marimo
-- plotly
-- pandas
-- numpy
-- rich
